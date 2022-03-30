@@ -81,10 +81,10 @@ can-ok $TestData, "get_cname", "6: Framework will allow retrieving a cname recor
 can-ok $TestData, "csv_out", "7: Framework will allow dumping to file";
 
 my %TestBlock = %("type" => "A",
-		"value" => "csulabvpn",
-		"additional" => "207.35.78.202");
+		"value" => "labvpn",
+		"additional" => "10.10.10.100");
 $TestData.ingest(%TestBlock);
-is $TestData.get_record("csulabvpn"), "207.35.78.202", "8: Can set and retrieve an a record";
+is $TestData.get_record("labvpn"), "10.10.10.100", "8: Can set and retrieve an a record";
 %TestBlock = %("type" => "AAAA",
 		"value" => "netlab2",
 		"additional" => "2001:470:1D:95D::254");
@@ -95,6 +95,12 @@ is $TestData.get_record("netlab2"), "2001:470:1D:95D::254", "9: Can set and retr
 		"additional" => "autodiscover.outlook.com.");
 $TestData.ingest(%TestBlock);
 is $TestData.get_cname("autodiscover"), "autodiscover.outlook.com.", "10: Can set and retrieve a cname record";
+
+%TestBlock = %("type" => "A",
+		"value" => "bigserver-2",
+		"additional" => "10.100.10.100");
+$TestData.ingest(%TestBlock);
+is $TestData.get_record("bigserver-2"), "10.100.10.100", "11: Can set and retrieve a record that failed with overly simple tokens in the grammar";
 
 
 done-testing; 
