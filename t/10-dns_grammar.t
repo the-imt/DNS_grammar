@@ -80,7 +80,7 @@ is $TestGrammar.made<line><type>, "CNAME", "2: Checking I can spot the CNAME";
 is $TestGrammar.made<line><value>, "autodiscover", "3: Checking I parse it correctly";
 is $TestGrammar.made<line><additional>, "autodiscover.outlook.com.", "4: Checking the CNAME actually points at something";
 
-$TestGrammar = DNS_grammar.parse(qw/csulabvpn		IN	A		10.10.10.100/, actions => DNS_captures);
+$TestGrammar = DNS_grammar.parse(qw/labvpn		IN	A		10.10.10.100/, actions => DNS_captures);
 is $TestGrammar.made<line><type>, "A", "5: Checking I can spot an A record";
 is $TestGrammar.made<line><value>, "labvpn", "6: Confirming I get a hostname";
 is $TestGrammar.made<line><additional>, "10.10.10.100", "7: Confirming I get the address";
