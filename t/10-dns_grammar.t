@@ -74,27 +74,27 @@ my $TestGrammar;
 #Note I expect some of these strings to eventually get straight up mean.
 
 # Confirm Grammars work as expected:
-say "Starting:  ";
+
 $TestGrammar = DNS_grammar.parse(qw/autodiscover		IN	CNAME		autodiscover.outlook.com./, actions => DNS_captures);
 is $TestGrammar.made<line><type>, "CNAME", "2: Checking I can spot the CNAME";
 is $TestGrammar.made<line><value>, "autodiscover", "3: Checking I parse it correctly";
 is $TestGrammar.made<line><additional>, "autodiscover.outlook.com.", "4: Checking the CNAME actually points at something";
 
-$TestGrammar = DNS_grammar.parse(qw/csulabvpn		IN	A		207.35.78.202/, actions => DNS_captures);
+$TestGrammar = DNS_grammar.parse(qw/csulabvpn		IN	A		10.10.10.100/, actions => DNS_captures);
 is $TestGrammar.made<line><type>, "A", "5: Checking I can spot an A record";
-is $TestGrammar.made<line><value>, "csulabvpn", "6: Confirming I get a hostname";
-is $TestGrammar.made<line><additional>, "207.35.78.202", "7: Confirming I get the address";
+is $TestGrammar.made<line><value>, "labvpn", "6: Confirming I get a hostname";
+is $TestGrammar.made<line><additional>, "10.10.10.100", "7: Confirming I get the address";
 
-# See note in parser in v6addr token, this is a pretty easy example, should probably be pathological
+# See note in parser in v6addr token, this is a pretty easy example, should probably be more pathological
 
 $TestGrammar = DNS_grammar.parse(qw/netlab2			IN	AAAA		2001:470:1D:95D::254/, actions => DNS_captures);
 is $TestGrammar.made<line><type>, "AAAA", "8: Checking I can spot an AAAA record";
 is $TestGrammar.made<line><value>, "netlab2", "9: Confirming I get a hostname";
 is $TestGrammar.made<line><additional>, "2001:470:1D:95D::254", "10: Confirming I get the address";
 
-$TestGrammar = DNS_grammar.parse(qw/woodroffe-2			IN	A		10.254.10.10/, actions => DNS_captures);
-is $TestGrammar.made<line><type>, "A", "11: Checking I can spot an A record";
-is $TestGrammar.made<line><value>, "woodroffe-2", "12: Confirming I get a different hostname - update to value token";
+$TestGrammar = DNS_grammar.parse(qw/bigserver-2			IN	A		10.254.10.10/, actions => DNS_captures);
+is $TestGrammar.made<line><type>, "A", "11: Checking I can spot a different A record";
+is $TestGrammar.made<line><value>, "bigserver-2", "12: Confirming I get a different hostname - update to value token";
 is $TestGrammar.made<line><additional>, "10.254.10.10", "13: Confirming I get the address";
 
 
