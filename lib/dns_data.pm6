@@ -27,7 +27,7 @@ Colin Wass
 =head1 LICENSE
 
 
-Copyright (c) 2018 - 2022, Colin Wass, The IMT
+Copyright (c) 2018 - 2022, Colin, The IMT
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that
