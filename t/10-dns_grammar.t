@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+#!/usr/bin/raku
 
 =begin pod
 
@@ -24,12 +24,12 @@ Some guy with a keyboard
 
 =head1 AUTHOR
 
-Colin Wass
+Colin
 
 =head1 LICENSE
 
 
-Copyright (c) 2018 - 2021, Colin Wass, The IMT
+Copyright (c) 2020 - 2022, Colin, The IMT
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that
@@ -94,7 +94,7 @@ is $TestGrammar.made<line><additional>, "2001:470:1D:95D::254", "10: Confirming 
 
 $TestGrammar = DNS_grammar.parse(qw/woodroffe-2			IN	A		10.254.10.10/, actions => DNS_captures);
 is $TestGrammar.made<line><type>, "A", "11: Checking I can spot an A record";
-is $TestGrammar.made<line><value>, "woodroffe-2", "12: Confirming I get a hostname";
+is $TestGrammar.made<line><value>, "woodroffe-2", "12: Confirming I get a different hostname - update to value token";
 is $TestGrammar.made<line><additional>, "10.254.10.10", "13: Confirming I get the address";
 
 
