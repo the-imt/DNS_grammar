@@ -4,12 +4,12 @@
 
 =head1 NAME
 
-10-dns_grammar
+15-dns_grammar_AD
 
 =head1 SYNOPSIS
 
 
-tests for dns_grammar
+tests for dns_grammar_AD
 
 
 =head1 DESCRIPTION
